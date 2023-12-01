@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://8ee7xusiswjd"]
+
+[ext_resource type="FontFile" uid="uid://d2n5tj8nl5uun" path="res://misc/Alpharush.ttf" id="1_i87ji"]
+[ext_resource type="Script" path="res://scripts/misc/DamageNumber.gd" id="2_luwi7"]
+
+[node name="NumberLabel" type="Label"]
+z_index = 6
+offset_right = 40.0
+offset_bottom = 29.0
+theme_override_fonts/font = ExtResource("1_i87ji")
+theme_override_font_sizes/font_size = 12
+text = "10"
+script = ExtResource("2_luwi7")

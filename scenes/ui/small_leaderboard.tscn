@@ -1,0 +1,143 @@
+[gd_scene load_steps=8 format=3 uid="uid://6ao53g7bikaq"]
+
+[ext_resource type="Texture2D" uid="uid://7csq4spdmfd" path="res://assets/ui/base_container_2_small.png" id="1_f70ix"]
+[ext_resource type="Script" path="res://scripts/ui/SmallLeaderboard.gd" id="2_fbvsf"]
+[ext_resource type="FontFile" uid="uid://c7thntxb1otbu" path="res://misc/ThaleahFat.ttf" id="4_0t6dh"]
+[ext_resource type="FontFile" uid="uid://dw61yhdajfgpj" path="res://misc/NicoClean-Regular.ttf" id="4_aj6ll"]
+[ext_resource type="Texture2D" uid="uid://cqdtqj35cp8f3" path="res://assets/ui/base_input_field.png" id="5_efeaa"]
+[ext_resource type="Texture2D" uid="uid://bk3vax5asmj7a" path="res://assets/ui/icon_restart.png" id="6_67ln6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_idfvi"]
+
+[node name="SmallLeaderboard" type="TextureRect"]
+offset_right = 82.0
+offset_bottom = 112.0
+mouse_filter = 2
+texture = ExtResource("1_f70ix")
+script = ExtResource("2_fbvsf")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 0
+offset_right = 82.0
+offset_bottom = 112.0
+mouse_filter = 2
+
+[node name="Elements" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CenterContainer/Elements"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.92549, 0.839216, 1)
+theme_override_fonts/font = ExtResource("4_0t6dh")
+theme_override_font_sizes/font_size = 10
+text = "LEADERBOARD"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Message" type="Label" parent="CenterContainer/Elements"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.92549, 0.839216, 1)
+theme_override_fonts/font = ExtResource("4_aj6ll")
+theme_override_font_sizes/font_size = 5
+text = "Loading..."
+horizontal_alignment = 1
+
+[node name="ScoreContainer" type="VBoxContainer" parent="CenterContainer/Elements"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="AccessData" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="Login" type="Button" parent="AccessData"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 112.0
+offset_right = 76.0
+offset_bottom = 127.0
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 0.92549, 0.839216, 1)
+theme_override_fonts/font = ExtResource("4_0t6dh")
+theme_override_font_sizes/font_size = 7
+theme_override_styles/focus = SubResource("StyleBoxEmpty_idfvi")
+text = "Log-in"
+flat = true
+
+[node name="Register" type="Button" parent="AccessData"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 112.0
+offset_right = 38.0
+offset_bottom = 127.0
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 0.92549, 0.839216, 1)
+theme_override_fonts/font = ExtResource("4_0t6dh")
+theme_override_font_sizes/font_size = 7
+theme_override_styles/focus = SubResource("StyleBoxEmpty_idfvi")
+text = "Register"
+flat = true
+
+[node name="ShowData" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="Username" type="Label" parent="ShowData"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 116.0
+offset_right = 42.0
+offset_bottom = 125.0
+theme_override_colors/font_color = Color(1, 0.92549, 0.839216, 1)
+theme_override_fonts/font = ExtResource("4_aj6ll")
+theme_override_font_sizes/font_size = 5
+text = "Loading..."
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Score" type="Label" parent="ShowData"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 116.0
+offset_right = 77.0
+offset_bottom = 125.0
+theme_override_colors/font_color = Color(1, 0.92549, 0.839216, 1)
+theme_override_fonts/font = ExtResource("4_aj6ll")
+theme_override_font_sizes/font_size = 5
+text = "<null>"
+horizontal_alignment = 2
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="TextureRect" type="TextureRect" parent="ShowData"]
+z_index = -1
+layout_mode = 0
+offset_top = 113.0
+offset_right = 82.0
+offset_bottom = 131.0
+mouse_filter = 2
+texture = ExtResource("5_efeaa")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Refresh" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = -14.0
+offset_top = 2.0
+offset_right = 15.0
+offset_bottom = 30.0
+scale = Vector2(0.5, 0.5)
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("6_67ln6")
+stretch_mode = 3
+
+[connection signal="pressed" from="AccessData/Login" to="." method="_on_login_pressed"]
+[connection signal="pressed" from="AccessData/Register" to="." method="_on_register_pressed"]
+[connection signal="pressed" from="Refresh" to="." method="_on_refresh_pressed"]

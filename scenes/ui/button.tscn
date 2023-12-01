@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://bq36w2me4vlr"]
+
+[ext_resource type="Texture2D" uid="uid://dmvsmmbxwy0c" path="res://assets/ui/base_button.png" id="1_tf0p6"]
+[ext_resource type="Texture2D" uid="uid://bvem53nmph67h" path="res://assets/ui/base_button_hover.png" id="2_1r4do"]
+[ext_resource type="FontFile" uid="uid://c7thntxb1otbu" path="res://misc/ThaleahFat.ttf" id="3_nvorr"]
+
+[node name="Play" type="TextureButton"]
+offset_left = 120.0
+offset_top = 92.0
+offset_right = 253.0
+offset_bottom = 124.0
+scale = Vector2(0.6, 0.6)
+texture_normal = ExtResource("1_tf0p6")
+texture_hover = ExtResource("2_1r4do")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+offset_left = 43.3333
+offset_top = 5.0
+offset_right = 91.3333
+offset_bottom = 30.0
+theme_override_colors/font_color = Color(1, 0.92549, 0.839216, 1)
+theme_override_fonts/font = ExtResource("3_nvorr")
+theme_override_font_sizes/font_size = 24
+text = "PLAY"

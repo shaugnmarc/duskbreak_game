@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://bg07h1y86bgox"]
+
+[ext_resource type="Script" path="res://scripts/levels/Level.gd" id="1_5tngm"]
+[ext_resource type="PackedScene" uid="uid://bp6kndqp4lk6y" path="res://scenes/levels/marker.tscn" id="5_bprdu"]
+[ext_resource type="PackedScene" uid="uid://04n8285beash" path="res://scenes/levels/camera_2d.tscn" id="5_l0il8"]
+[ext_resource type="Script" path="res://scripts/SpawnManager.gd" id="6_7t13v"]
+[ext_resource type="PackedScene" uid="uid://b3vsessyve18s" path="res://scenes/levels/starting_map_area.tscn" id="6_avah8"]
+[ext_resource type="PackedScene" uid="uid://b52k8w8uabmke" path="res://scenes/characters/player.tscn" id="10_3xmie"]
+[ext_resource type="PackedScene" uid="uid://p4g8rogxxjfx" path="res://scenes/ui/heads_up_display.tscn" id="11_duxkd"]
+
+[node name="Level" type="Node2D"]
+process_mode = 1
+script = ExtResource("1_5tngm")
+
+[node name="Player" parent="." instance=ExtResource("10_3xmie")]
+unique_name_in_owner = true
+position = Vector2(160, 184)
+
+[node name="Screen" parent="." instance=ExtResource("11_duxkd")]
+
+[node name="Camera2D" parent="." instance=ExtResource("5_l0il8")]
+unique_name_in_owner = true
+position = Vector2(0, 64)
+
+[node name="InitialMapArea" parent="." instance=ExtResource("6_avah8")]
+
+[node name="DelayRemove" type="Timer" parent="."]
+process_mode = 1
+wait_time = 10.0
+one_shot = true
+
+[node name="ScoreTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="SpawnManager" type="Node2D" parent="."]
+script = ExtResource("6_7t13v")
+
+[node name="Marker" parent="SpawnManager" instance=ExtResource("5_bprdu")]
+position = Vector2(136, 136)
+
+[node name="Marker2" parent="SpawnManager" instance=ExtResource("5_bprdu")]
+position = Vector2(136, 88)
+
+[node name="Marker3" parent="SpawnManager" instance=ExtResource("5_bprdu")]
+position = Vector2(136, 184)
+
+[node name="StartDelay" type="Timer" parent="SpawnManager"]
+unique_name_in_owner = true
+wait_time = 4.0
+one_shot = true
+
+[connection signal="child_order_changed" from="." to="." method="_on_child_order_changed"]
+[connection signal="timeout" from="DelayRemove" to="." method="_on_delay_remove_timeout"]
+[connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
+[connection signal="snap_update" from="SpawnManager/Marker" to="." method="_on_marker_snap_update"]

@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://o84v2fns12qw"]
+
+[node name="HorizontalCast" type="RayCast2D"]
+modulate = Color(0, 0.737255, 0.54902, 1)
+position = Vector2(0, -6)
+target_position = Vector2(15, 0)
+collision_mask = 16
+hit_from_inside = true

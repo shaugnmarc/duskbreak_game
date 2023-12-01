@@ -1,0 +1,33 @@
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://ye2agefm8l2t"
+path="res://.godot/imported/Abaddon Bold.ttf-7dce9dae87b9a7a1c94c59af9afd3f00.fontdata"
+
+[deps]
+
+source_file="res://misc/Abaddon Bold.ttf"
+dest_files=["res://.godot/imported/Abaddon Bold.ttf-7dce9dae87b9a7a1c94c59af9afd3f00.fontdata"]
+
+[params]
+
+Rendering=null
+antialiasing=1
+generate_mipmaps=false
+multichannel_signed_distance_field=false
+msdf_pixel_range=8
+msdf_size=48
+allow_system_fallback=true
+force_autohinter=false
+hinting=1
+subpixel_positioning=1
+oversampling=0.0
+Fallbacks=null
+fallbacks=[]
+Compress=null
+compress=true
+preload=[]
+language_support={}
+script_support={}
+opentype_features={}

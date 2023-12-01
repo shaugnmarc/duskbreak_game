@@ -1,0 +1,303 @@
+[gd_scene load_steps=24 format=3 uid="uid://p4g8rogxxjfx"]
+
+[ext_resource type="Script" path="res://scripts/BuildLabel.gd" id="1_jf1gt"]
+[ext_resource type="Script" path="res://scripts/HUD.gd" id="1_mo6ih"]
+[ext_resource type="FontFile" uid="uid://d2n5tj8nl5uun" path="res://misc/Alpharush.ttf" id="2_lae67"]
+[ext_resource type="Texture2D" uid="uid://be6uily2j518x" path="res://assets/ui/healthbar_under.png" id="6_amin1"]
+[ext_resource type="Texture2D" uid="uid://cyccrvy8hdyqd" path="res://assets/ui/healthbar_progress.png" id="7_e5862"]
+[ext_resource type="Script" path="res://scripts/misc/Effects.gd" id="8_1r0ij"]
+[ext_resource type="Shader" path="res://misc/shockwave.gdshader" id="8_16cul"]
+[ext_resource type="FontFile" uid="uid://b4lgqtt5hygh0" path="res://misc/PeaberryBase.ttf" id="10_cjbhb"]
+[ext_resource type="Texture2D" uid="uid://dmxrjusajli8c" path="res://assets/ui/ability/outline_dark.png" id="10_i17cy"]
+[ext_resource type="FontFile" uid="uid://c7thntxb1otbu" path="res://misc/ThaleahFat.ttf" id="10_rcwug"]
+[ext_resource type="Texture2D" uid="uid://8v26juvd86ds" path="res://assets/ui/ability/dark_progress.png" id="11_kg70m"]
+[ext_resource type="Texture2D" uid="uid://d34rii3w5qu8g" path="res://assets/ui/milestonebar_over.png" id="12_8kk1c"]
+[ext_resource type="Texture2D" uid="uid://bk61oqfe7bmf7" path="res://assets/ui/ability/dark_assassin.png" id="12_ptxe8"]
+[ext_resource type="Script" path="res://scripts/Milestone.gd" id="12_q2s1a"]
+[ext_resource type="Texture2D" uid="uid://rjiq8epct7of" path="res://assets/ui/icon_pause.png" id="13_0tbwp"]
+[ext_resource type="Texture2D" uid="uid://daje40yf7hv3t" path="res://assets/ui/milestonebar_progress.png" id="13_q7ol1"]
+[ext_resource type="Texture2D" uid="uid://d3t1mkiwgs7ke" path="res://assets/ui/ability/light_progress.png" id="13_wqfb5"]
+[ext_resource type="Texture2D" uid="uid://b7xykwtklhj0a" path="res://assets/ui/ability/light_laser.png" id="14_3ukii"]
+[ext_resource type="PackedScene" uid="uid://brfdyjmoujaaa" path="res://scenes/ui/pause_screen.tscn" id="16_3x31i"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5snjh"]
+shader = ExtResource("8_16cul")
+shader_parameter/center = Vector2(0.5, 0.5)
+shader_parameter/force = 0.2
+shader_parameter/size = 0.065
+shader_parameter/thickness = 0.15
+shader_parameter/offset = null
+
+[sub_resource type="Animation" id="Animation_6uv2x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.065]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:shader_parameter/thickness")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.15]
+}
+
+[sub_resource type="Animation" id="Animation_c6l7m"]
+resource_name = "shockwave"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.065, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:shader_parameter/thickness")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.2, 0.007]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1wb78"]
+_data = {
+"RESET": SubResource("Animation_6uv2x"),
+"shockwave": SubResource("Animation_c6l7m")
+}
+
+[node name="Screen" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_mo6ih")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 320.0
+offset_bottom = 180.0
+metadata/_edit_lock_ = true
+
+[node name="CenterContainer" type="CenterContainer" parent="Control"]
+layout_mode = 0
+offset_top = 165.0
+offset_right = 320.0
+offset_bottom = 180.0
+
+[node name="BuildLabel" type="Label" parent="Control/CenterContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_lae67")
+theme_override_font_sizes/font_size = 8
+text = "Date"
+vertical_alignment = 1
+script = ExtResource("1_jf1gt")
+date = 1
+month = 12
+
+[node name="Components" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 256.0
+offset_right = 256.0
+
+[node name="HealthBar" type="TextureProgressBar" parent="Components"]
+layout_direction = 1
+layout_mode = 0
+offset_left = -248.0
+offset_top = 32.0
+offset_right = -233.0
+offset_bottom = 155.0
+value = 90.0
+fill_mode = 3
+texture_under = ExtResource("6_amin1")
+texture_progress = ExtResource("7_e5862")
+
+[node name="AbilityDarkBar" type="TextureProgressBar" parent="Components"]
+layout_mode = 0
+offset_left = -232.0
+offset_top = 88.0
+offset_right = -192.0
+offset_bottom = 128.0
+value = 50.0
+fill_mode = 3
+texture_under = ExtResource("10_i17cy")
+texture_progress = ExtResource("11_kg70m")
+
+[node name="AbilityDark" type="TextureRect" parent="Components/AbilityDarkBar"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 26.0
+offset_bottom = 26.0
+texture = ExtResource("12_ptxe8")
+
+[node name="Label" type="Label" parent="Components/AbilityDarkBar/AbilityDark"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = -2.0
+offset_right = 42.0
+offset_bottom = 24.0
+theme_override_colors/font_shadow_color = Color(0.0509804, 0.168627, 0.270588, 1)
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("10_rcwug")
+text = "R"
+
+[node name="AbilityLightBar" type="TextureProgressBar" parent="Components"]
+layout_mode = 0
+offset_left = -232.0
+offset_top = 60.0
+offset_right = -192.0
+offset_bottom = 100.0
+value = 50.0
+fill_mode = 3
+texture_under = ExtResource("10_i17cy")
+texture_progress = ExtResource("13_wqfb5")
+
+[node name="AbilityLight" type="TextureRect" parent="Components/AbilityLightBar"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 26.0
+offset_bottom = 26.0
+texture = ExtResource("14_3ukii")
+
+[node name="Label" type="Label" parent="Components/AbilityLightBar/AbilityLight"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = -2.0
+offset_right = 42.0
+offset_bottom = 24.0
+theme_override_colors/font_shadow_color = Color(0.0509804, 0.168627, 0.270588, 1)
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("10_rcwug")
+text = "E"
+
+[node name="MilestoneCenterContainer" type="CenterContainer" parent="Components"]
+layout_mode = 0
+offset_left = -256.0
+offset_right = 64.0
+offset_bottom = 32.0
+script = ExtResource("12_q2s1a")
+
+[node name="MilestoneBar" type="TextureProgressBar" parent="Components/MilestoneCenterContainer"]
+layout_mode = 2
+value = 50.0
+texture_over = ExtResource("12_8kk1c")
+texture_progress = ExtResource("13_q7ol1")
+
+[node name="Label" type="Label" parent="Components/MilestoneCenterContainer/MilestoneBar"]
+layout_mode = 0
+offset_right = 172.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(1, 0.831373, 0.639216, 1)
+theme_override_colors/font_outline_color = Color(0.0588235, 0.14902, 0.223529, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("10_rcwug")
+theme_override_font_sizes/font_size = 6
+text = "KILL MILESTONES"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="KillCount" type="Label" parent="Components/MilestoneCenterContainer/MilestoneBar"]
+layout_mode = 0
+offset_left = 132.0
+offset_right = 172.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(1, 0.831373, 0.639216, 1)
+theme_override_colors/font_outline_color = Color(0.0588235, 0.14902, 0.223529, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("10_rcwug")
+theme_override_font_sizes/font_size = 6
+text = "x10"
+horizontal_alignment = 2
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="ComponentsRight" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 280.0
+offset_right = 320.0
+offset_bottom = 40.0
+
+[node name="ScoreLabel" type="RichTextLabel" parent="ComponentsRight"]
+layout_mode = 0
+offset_left = -3.0
+offset_top = 74.0
+offset_right = 29.0
+offset_bottom = 90.0
+theme_override_colors/font_shadow_color = Color(0.0588235, 0.14902, 0.223529, 1)
+theme_override_fonts/normal_font = ExtResource("10_rcwug")
+theme_override_font_sizes/normal_font_size = 9
+text = "SCORE"
+
+[node name="ScoreNumber" type="Label" parent="ComponentsRight"]
+layout_mode = 0
+offset_left = -36.0
+offset_top = 83.0
+offset_right = 52.0
+offset_bottom = 123.0
+theme_override_colors/font_shadow_color = Color(0.0588235, 0.14902, 0.223529, 1)
+theme_override_colors/font_outline_color = Color(0.329412, 0.305882, 0.407843, 1)
+theme_override_fonts/font = ExtResource("10_cjbhb")
+text = "4000"
+horizontal_alignment = 1
+
+[node name="Pause" type="TextureButton" parent="ComponentsRight"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 8.0
+offset_right = 34.0
+offset_bottom = 26.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("13_0tbwp")
+
+[node name="Effects" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("8_1r0ij")
+
+[node name="Shockwave" type="ColorRect" parent="Effects"]
+top_level = true
+material = SubResource("ShaderMaterial_5snjh")
+layout_mode = 0
+offset_right = 320.0
+offset_bottom = 180.0
+pivot_offset = Vector2(160, 90)
+color = Color(0.360784, 0.596078, 0.423529, 1)
+metadata/_edit_lock_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Effects/Shockwave"]
+libraries = {
+"": SubResource("AnimationLibrary_1wb78")
+}
+
+[node name="PauseScreen" parent="." instance=ExtResource("16_3x31i")]
+
+[connection signal="pressed" from="ComponentsRight/Pause" to="." method="_on_home_pressed"]

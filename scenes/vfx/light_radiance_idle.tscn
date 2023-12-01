@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://c4foqvshjbq2e"]
+
+[ext_resource type="Texture2D" uid="uid://u1r5jc5qp125" path="res://assets/effects/light_particle.png" id="1_ayt7i"]
+
+[sub_resource type="Curve" id="Curve_w33o6"]
+_data = [Vector2(0, 0.515789), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ecgct"]
+curve = SubResource("Curve_w33o6")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ypjgg"]
+emission_shape = 1
+emission_sphere_radius = 23.0
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+radial_accel_min = -15.0
+radial_accel_max = -15.0
+scale_min = 0.6
+scale_max = 0.6
+scale_curve = SubResource("CurveTexture_ecgct")
+color = Color(1, 0.92549, 0.839216, 1)
+hue_variation_max = 0.14
+
+[node name="LightRadianceIdle" type="GPUParticles2D"]
+amount = 12
+process_material = SubResource("ParticleProcessMaterial_ypjgg")
+texture = ExtResource("1_ayt7i")
+lifetime = 1.5
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+color = Color(1, 0.92549, 0.839216, 1)
+energy = 0.1
+max_distance = 100.0

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://clravqqpavx31"]
+
+[node name="VerticalCast" type="RayCast2D"]
+position = Vector2(4, -2)
+target_position = Vector2(0, 6)
+hit_from_inside = true

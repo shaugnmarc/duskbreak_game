@@ -1,0 +1,74 @@
+[gd_scene load_steps=11 format=3 uid="uid://bxrfvytbf4bfi"]
+
+[ext_resource type="Texture2D" uid="uid://bsqqoavacvq4n" path="res://assets/sprites/vfx/hit_mark.png" id="1_ox6ur"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4f6r2"]
+atlas = ExtResource("1_ox6ur")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xwet6"]
+atlas = ExtResource("1_ox6ur")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5a5sa"]
+atlas = ExtResource("1_ox6ur")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vdcha"]
+atlas = ExtResource("1_ox6ur")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0mmri"]
+atlas = ExtResource("1_ox6ur")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_427fw"]
+atlas = ExtResource("1_ox6ur")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0575w"]
+atlas = ExtResource("1_ox6ur")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fe3l8"]
+atlas = ExtResource("1_ox6ur")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v8ii1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4f6r2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xwet6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5a5sa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vdcha")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0mmri")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_427fw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0575w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fe3l8")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 20.0
+}]
+
+[node name="HitSprite2D" type="AnimatedSprite2D"]
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_v8ii1")
+animation = &"hit"
+frame = 7
+frame_progress = 1.0

@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgo2kkgi8rcyj"]
+
+[ext_resource type="Shader" path="res://misc/shockwave.gdshader" id="1_mvobm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5jn12"]
+shader = ExtResource("1_mvobm")
+shader_parameter/center = null
+shader_parameter/force = null
+shader_parameter/size = null
+shader_parameter/thickness = null
+shader_parameter/offset = null
+
+[node name="ScreenEffects" type="CanvasLayer"]
+
+[node name="Shockwave" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_5jn12")
+offset_right = 320.0
+offset_bottom = 180.0
+color = Color(0.360784, 0.596078, 0.423529, 1)

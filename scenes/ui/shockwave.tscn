@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhqf6n2hvj55e"]
+
+[ext_resource type="Shader" path="res://misc/shockwave.gdshader" id="1_ra446"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rur5e"]
+shader = ExtResource("1_ra446")
+shader_parameter/center = Vector2(0.36, 0.53)
+shader_parameter/force = 0.025
+shader_parameter/size = 0.345
+shader_parameter/thickness = 0.425
+shader_parameter/offset = null
+
+[node name="Shockwave" type="ColorRect"]
+material = SubResource("ShaderMaterial_rur5e")
+offset_right = 112.0
+offset_bottom = 48.0
+color = Color(0.360784, 0.596078, 0.423529, 1)

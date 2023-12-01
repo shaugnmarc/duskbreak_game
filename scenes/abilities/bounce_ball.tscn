@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://ce1v3r4wtiuts"]
+
+[ext_resource type="Script" path="res://scripts/BounceBall.gd" id="1_14bwf"]
+[ext_resource type="Texture2D" uid="uid://boijhj4sxeq8b" path="res://assets/effects/laser_particle.png" id="2_mgeo6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3fk0n"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1m8jd"]
+
+[node name="BounceBall" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 16
+motion_mode = 1
+script = ExtResource("1_14bwf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("2_mgeo6")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 19
+
+[node name="AreaCollision" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_3fk0n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1m8jd")
+debug_color = Color(0.121569, 0.701961, 0, 0.419608)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
