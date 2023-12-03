@@ -44,7 +44,7 @@ func connect_game(level_node: Level) -> void:
 func level_start() -> void:
 	ongoing_game = true
 	
-	timer.wait_time = 60.0
+	timer.wait_time = 50.0
 	timer.one_shot = false
 	timer.start()
 	

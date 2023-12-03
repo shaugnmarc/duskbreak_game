@@ -91,7 +91,7 @@ func _physics_process(delta: float) -> void:
 
 func jump() -> void:
 	velocity.y = JUMP_VELOCITY
-	AudioManager.play_sfx("player_vertical", -4.0)
+	AudioManager.play_sfx("player_vertical", -6.0)
 
 func _change_dir() -> void:
 
@@ -117,7 +117,7 @@ func _change_dir() -> void:
 #		move_down()
 
 func move_down() -> void:
-	AudioManager.play_sfx("player_vertical", -4.0)
+	AudioManager.play_sfx("player_vertical", -8.0)
 	is_dropping = true
 	set_collision_mask_value(1, false)
 	await get_tree().create_timer(0.1).timeout

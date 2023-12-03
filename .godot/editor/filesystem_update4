@@ -16,3 +16,6 @@ res://scenes/abilities/bounce_ball.tscn
 res://scenes/abilities/light_projectile.tscn
 res://scenes/levels/middle_map_area.tscn
 res://misc/bg.tscn
+res://scenes/ui/register_screen.tscn
+res://scripts/ui/RegisterScreen.gd
+res://scripts/autoloads/ScoreManager.gd

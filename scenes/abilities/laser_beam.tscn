@@ -8,22 +8,18 @@
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_57ib3"]
 particle_flag_disable_z = true
 spread = 40.11
-gravity = Vector3(0, 0, 0)
 initial_velocity_min = 100.0
 initial_velocity_max = 100.0
-orbit_velocity_min = 0.0
-orbit_velocity_max = 0.0
-scale_min = 0.2
-scale_max = 0.2
+gravity = Vector3(0, 0, 0)
+scale_min = 0.3
+scale_max = 0.3
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7e6vd"]
 particle_flag_disable_z = true
 spread = 50.0
-gravity = Vector3(0, 0, 0)
 initial_velocity_min = 50.0
 initial_velocity_max = 100.0
-orbit_velocity_min = 0.0
-orbit_velocity_max = 0.0
+gravity = Vector3(0, 0, 0)
 scale_min = 0.5
 scale_max = 0.5
 color = Color(1, 1, 0.909804, 1)
@@ -36,16 +32,14 @@ point_count = 3
 curve = SubResource("Curve_qpm25")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_w8vf5"]
-emission_shape = 3
-emission_box_extents = Vector3(60, 10, 1)
 particle_flag_align_y = true
 particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(60, 10, 1)
 direction = Vector3(-1, 0, 0)
-gravity = Vector3(0, 0, 0)
 initial_velocity_min = 30.0
 initial_velocity_max = 30.0
-orbit_velocity_min = 0.0
-orbit_velocity_max = 0.0
+gravity = Vector3(0, 0, 0)
 tangential_accel_min = 100.0
 tangential_accel_max = 100.0
 scale_min = 0.3
@@ -73,7 +67,6 @@ end_cap_mode = 2
 round_precision = 4
 
 [node name="CastingParticles" type="GPUParticles2D" parent="."]
-emitting = false
 process_material = SubResource("ParticleProcessMaterial_57ib3")
 texture = ExtResource("3_d8pvq")
 lifetime = 0.2
@@ -95,7 +88,7 @@ preprocess = 1.0
 randomness = 1.0
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
-energy = 0.2
+energy = 0.15
 
 [node name="SoundTimer" type="Timer" parent="."]
 wait_time = 0.1

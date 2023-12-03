@@ -1,7 +1,11 @@
 extends TextureRect
 
+enum Platform {DESKTOP, WEB}
+
 const ScoreItem = preload("res://addons/silent_wolf/Scores/ScoreItem.tscn")
 const SWLogger = preload("res://addons/silent_wolf/utils/SWLogger.gd")
+
+@export var platform: Platform  = Platform.DESKTOP
 
 var list_index = 0
 # Replace the leaderboard name if you're not using the default leaderboard
@@ -38,28 +42,33 @@ func _ready():
 
 
 func _on_data_loaded() -> void:
+	
+	if platform == Platform.DESKTOP:
+		if UserData.is_registered:
+			$AccessData/Register.disabled = true
+		else:
+			$AccessData/Register.disabled = false
+			
+		if UserData.is_logged_in:
+			$AccessData/Login.disabled = true
+		else:
+			$AccessData/Login.disabled = false
+			
+		if UserData.user_name != "":
+			$AccessData.hide()
+			$ShowData.show()
+			$ShowData/Username.text = UserData.user_name
 
-	if UserData.is_registered:
-		$AccessData/Register.disabled = true
+			$ShowData/Score.text = str(await ScoreManager.get_high_score())
+		else:
+			$AccessData.show()
+			$ShowData.hide()
+			$ShowData/Username.text = "ErrorAUTH"
+			$ShowData/Score.text = "<null>"
 	else:
-		$AccessData/Register.disabled = false
-		
-	if UserData.is_logged_in:
-		$AccessData/Login.disabled = true
-	else:
-		$AccessData/Login.disabled = false
-		
-	if UserData.user_name != "":
 		$AccessData.hide()
-		$ShowData.show()
-		$ShowData/Username.text = UserData.user_name
-
-		$ShowData/Score.text = str(await ScoreManager.get_high_score())
-	else:
-		$AccessData.show()
 		$ShowData.hide()
-		$ShowData/Username.text = "ErrorAUTH"
-		$ShowData/Score.text = "<null>"
+		$WebInfo.show()
 		
 func _on_score_loaded() -> void:
 	pass
@@ -152,7 +161,6 @@ func _on_login_pressed() -> void:
 func _on_register_pressed() -> void:
 	Scenes.to_scene("res://scenes/ui/register_screen.tscn")
 	AudioManager.play_sfx("button")
-
 
 func _on_refresh_pressed() -> void:
 	var score_container = $CenterContainer/Elements/ScoreContainer

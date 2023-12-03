@@ -1,7 +1,9 @@
 extends Control
 
 const SWLogger = preload("res://addons/silent_wolf/utils/SWLogger.gd")
-const FILTERS = "res://misc/filters.txt"
+
+# The file itself is hidden for safety purposes, if you want to access it please contace me
+const FILTERS = "res://private/filters.txt"
 
 func _ready():
 	SilentWolf.check_auth_ready()
@@ -54,7 +56,7 @@ func _has_symbol(input_string: String) -> bool:
 		return false  # String does not contain a symbol
 
 func _has_filtered_word() -> void:
-	show_processing_label("Your chosen username contains strictly prohibited language. Please... just don't :D")
+	show_processing_label("Chosen username contains strictly prohibited language. Please change it")
 
 func _on_registration_complete(sw_result: Dictionary) -> void:
 	if sw_result.success:
@@ -91,7 +93,7 @@ func registration_user_pwd_success() -> void:
 
 func registration_failure(error: String) -> void:
 	hide_processing_label()
-	$CenterContainer/ContainerRect/CenterContainer/VBoxContainer/MainLabel/Buttons/Register.disabled = true
+	$CenterContainer/ContainerRect/CenterContainer/VBoxContainer/MainLabel/Buttons/Register.disabled = false
 	$CenterContainer/ContainerRect/Message/MessageLabel.text = error
 	$CenterContainer/ContainerRect/Message.show()
 

@@ -8,7 +8,7 @@ var hud: CanvasLayer
 
 func _ready() -> void:
 	Input.set_custom_mouse_cursor(point_hand_cursor,Input.CURSOR_POINTING_HAND)
-	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
+	#DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
 	
 func shake_camera(intensity: float) -> void:
 	if is_instance_valid(screen_camera):

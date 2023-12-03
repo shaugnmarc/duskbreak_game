@@ -60,7 +60,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _start_attack() -> void:
-	var impulse_strength: float = 120.0
+	var impulse_strength: float = 130.0
 	is_attacking = true
 	
 	sprite.play("attack")

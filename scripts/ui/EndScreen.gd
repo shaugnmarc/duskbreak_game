@@ -36,6 +36,7 @@ func _ready() -> void:
 	$CenterContainer/TextureRect/CenterContainer/VBoxContainer/MainLabel/ScoreValues/HighScoreValue.text = str(ScoreManager.current_score)
 	
 	GameManager.reset_run_progress()
+	AudioManager.stop_music()
 	AudioManager.play_sfx("end_screen")
 	ScoreManager.load_high_score()
 	ScoreManager.update_high_score(ScoreManager.current_score)

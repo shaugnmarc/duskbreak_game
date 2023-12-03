@@ -81,9 +81,14 @@ func get_high_score() -> int:
 func _ready() -> void:
 	UserData.new_user_register.connect(load_high_score)
 	
+	var api_path = FileAccess.open("res://private/api_key.txt", FileAccess.READ)
+	var api_raw = api_path.get_as_text()
+	var api = api_raw.replace("\n", "")
+
+
 	SilentWolf.configure({
-	"api_key": "",
-	"game_id": "",
+	"api_key": api,
+	"game_id": "Duskbreak",
 	"log_level": 1})
 
 	SilentWolf.configure_scores({

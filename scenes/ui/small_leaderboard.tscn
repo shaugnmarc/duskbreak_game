@@ -138,6 +138,27 @@ mouse_default_cursor_shape = 2
 texture_normal = ExtResource("6_67ln6")
 stretch_mode = 3
 
+[node name="WebInfo" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Username" type="Label" parent="WebInfo"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 114.0
+offset_right = 80.0
+offset_bottom = 138.0
+theme_override_colors/font_color = Color(1, 0.92549, 0.839216, 1)
+theme_override_colors/font_shadow_color = Color(0.0392157, 0.133333, 0.211765, 1)
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("4_aj6ll")
+theme_override_font_sizes/font_size = 4
+text = "Please download the non-web application in order to register an account."
+vertical_alignment = 1
+autowrap_mode = 3
+
 [connection signal="pressed" from="AccessData/Login" to="." method="_on_login_pressed"]
 [connection signal="pressed" from="AccessData/Register" to="." method="_on_register_pressed"]
 [connection signal="pressed" from="Refresh" to="." method="_on_refresh_pressed"]
